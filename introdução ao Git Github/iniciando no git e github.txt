@@ -1,0 +1,169 @@
+          --Introdução ao git--
+
+->->Entendendo o que é Git e sua importancia
+- Software é feito de forma colaborativa.
+
+O git é um software de versionamento de código, ele ajuda a criar e monitorar diferentes
+versões do código que está sendo desenvolvido.
+
+            GIT um sistema distribuido e seguro
+A estrutrura em que foi montada o sistema permitir uma maior segurança por que 
+qualquer alteração feita no arquivo está sendo gravada em cada dispositivo
+que é feita essa alteração, isso permitir que nenhum dado seja perdido por
+algum motivo, a não ser que o proprio programador faça isso.
+resumindo é um sistema que possui multiplas cópias de si mesmo em diferentes
+locais.
+
+O que vamos aprender:
+1- Controle de versão
+2- Armazenamento em nuvem
+3- Trabalho em equipe
+4- Melhorar seu código
+5- Reconhecimento
+--------------------------------------------------------------------------------------
+            --Navegação via command line interface e instalação--
+
+->->Comandos básicos para um bom desempenho no terminal
+TAB - faz o autocomplemento da pasta ou diretorio que você está procurando
+ECHO - exibe a informação na tela
+ 
+   Alguns comandos de navegação no windows e linux:
+WINDOWS                                                  # LINUX
+DIR - lista todos os diretorios em que você está setado  # LS
+
+CD  - esse comando faz a navegação até a pasta raiz ou   # CD
+a pasta ou a pasta indicada no comando                   # 
+OBS: cd..(esse comando faz retroceder a navegação para   #
+a pasta inicial do diretorio C:)                         #
+
+CLS - limpa toda a tela                                  # CLEAR
+
+MKDIR - esse comando cria um diretorio(pasta)            # MKDIR
+
+DEL - esse comando apaga somente o conteúdo que está     # 
+dentro do diretorio(pasta) indicado no comando           # 
+
+RMDIR - esse comando apaga todo o conteúdo e o diretorio # RM -RF
+indicado no comando.
+--------------------------------------------------------------------------------------
+
+      --Entendendo como o Git funciona por baixo dos panos--
+
+->->Tópicos fundamentais para entender o funcionamento do Git
+1)O que o SHA?
+ O SHA é um algoritmo de encriptação, ou seja ele pega seu arquivo e vai 
+ embaralhar de uma forma muito específica gerando um conjunto de caracteres
+ de 40 digitos que será unico e vai servi como um identificação do arquivo
+ encriptado 
+
+->->Objetos internos do git
+No git temos alguns objetos fundamentais que identificam arquivos que são:
+os Blobs,Tree e os Commits.
+
+Os Blobs aramazenam os metadados do conteudo encriptado servindo como base 
+de indentificação inicial dos arquivos para os outros objetos.  
+ -O Blobs contem o tipo de objeto, tamanho do arquivo o sha1 e muitos outros 
+  metadados.
+
+As Tree armazenam os blobs o nome do arquivo o tamanho e apontam para outra
+arvoré. Nas Tree tambem ela armazena seu proprio SHA1.  
+
+Os Commits são os objetos que vai juntar tudo o que foi armazenado ou 
+alterado dentro dos arquivos, ele aponta para as Tree, aponta para o ultimo
+commit realizado(parente),a data, hora, autor e a mensagem.
+--------------------------------------------------------------------------------------
+
+       --Primeiros comandos com o git--
+->->Iniciando o git e criando um commit
+git init
+ para iniciar o repositorio do git. Ele cria uma pasta chamada .git que é o 
+ repositorio que nos falamos.
+
+git add *
+ para mover arquivos criados e alterados para o repositorio local iniciado
+ anteriormente.
+
+git commit -m""
+  esse comando confirma as alterações feitas nos arquivos do repositorio e vem
+  sempre acompanhado de uma mensagem que identifica a alteração. atualizando o
+  repositório. 
+
+Obs: o comando [ls -a ] mostrar os arquivos ou repositorios ocultos na pasta.
+     o comando [git remote -v] mostrar os repositorios remotos.
+-------------------------------------------------------------------------------------
+
+      --Ciclo de vida dos arquiovs no git--
+->->Passo a passo no ciclo de vida
+ ESTAGIOS DE UM ARQUIVO DENTRO DO GIT
+Untracked
+Unmodified
+Modified
+Staged
+
+Obs:Comando [ mv ...] move o arquivo para a a pasta desejada.
+    Comando [ crtl L] limpa a tela do terminal.
+-------------------------------------------------------------------------------------
+
+	   --Introdução ao Github--
+
+->->Trabalhando com o Github
+Obs: Comando [git config --list]
+     exibe todas as informações do usuário cadastradas no git(email,username)
+
+     Comando [git config --global --unset user.email]
+     Esse comando deleta a informação setada.
+ 
+     Comando [git config --global user.email]
+     Esse comando renomeia a propriedade indicada.
+
+
+Depois de ter criado o repositorio local na minha maquina agora vamos enviar
+os arquivos para o repositorio remote no github.
+PASSO 1:
+No github crie o repositorio remoto.
+
+PASSO 2:
+copie a url do repositorio e cole junto com o 
+Comando[git remote add origin "url"]
+
+Obs:Comando[git remote -v]
+Exibe a lista de repositorios remotos cadastrados.
+
+PASSO 3:
+Se todos os arquivos foram commitados, então e so executar o 
+comando[git push origin master]
+dessa forma todo o repositorio no git vai ser enviado para o repositorio no 
+github.
+-------------------------------------------------------------------------------------
+          --Resolvendo Conflitos--
+
+->->Como os conflitos acaontecem no github e como resolvê-los.
+Os conflitos acontecem principalmente quando dois programadores modificam a 
+mesma linha do código ou arquivo que está no repositorio do git e no github.
+E para resolver esses conflitos é preciso:
+1)Usar o comando git status para ver se existe algum arquivo modificado no 
+repositorio local(git) e Verificar tambem se no repositorio remoto(github)
+houve alguma modificação.
+
+2)Caso encontre alguma alteração no repositorio local use o comando git add * para 
+adicionar essas alterações para o estado de staged, com isso feito agora as alterações
+podem ser commitadas. 
+-Se houver alguma alteração no repositorio remoto é preciso baixar todo o arquivo para o re
+ positorio local usando o comando[git pull origin master].
+
+ OBS:O comando [git pull origin master] ele faz um copia do repositorio remoto e envia para o
+ repositorio local.
+
+-Realizar as alterações no repositorio que foi baixado
+
+-Verificar com o comando git status se tem algum arquivo diferente no repositorio
+
+-Caso haja conflitos depois dos passos anteriores execute o comando git add * para adicionar 
+ o arquivo modificado para a area de commit o staged
+
+-Depois envia o repositorio local para o remoto atraves do comando [git push origin master.]
+
+PARA BAIXAR TODO O CONTEUDO DO REPOSITORIO REMOTO PARA O LOCAL O COMANDO:
+[git clone ....e o endereço da internet disponivel la no github] 
+Atenção:Quando e feito isso todo o clone ja vem com o repositorio pronto.
+  
